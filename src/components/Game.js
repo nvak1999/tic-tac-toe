@@ -7,6 +7,8 @@ function Game() {
   const [winner, setWinner] = useState(null);
   //Declaring a Winner
   useEffect(() => {
+    console.log("setSquares");
+
     setWinner(calculateWinner(squares));
   }, [squares]);
 
@@ -39,14 +41,17 @@ function Game() {
 
   //Handle player
   const handleClick = (i) => {
+    const newSquares = squares;
     if (winner) return;
-    if (!squares[i] && !winner) {
+    if (!newSquares[i] && !winner) {
       if (xIsNext) {
         setXIsNext(false);
-        setSquares((arr) => [...arr, (squares[i] = "X")]);
+        newSquares[i] = "X";
+        setSquares(newSquares);
       } else {
         setXIsNext(true);
-        setSquares((arr) => [...arr, (squares[i] = "O")]);
+        newSquares[i] = "O";
+        setSquares(newSquares);
       }
     }
     console.log(squares);
