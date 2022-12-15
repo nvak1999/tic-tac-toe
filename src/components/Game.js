@@ -8,9 +8,8 @@ function Game() {
   //Declaring a Winner
   useEffect(() => {
     console.log("setSquares");
-
     setWinner(calculateWinner(squares));
-  }, [squares]);
+  }, [squares, xIsNext]);
 
   //function to check if a player has won.
   //If a player has won, we can display text such as “Winner: X” or “Winner: O”.
